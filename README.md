@@ -1,0 +1,1 @@
+# Tinimini's NixOS Config
