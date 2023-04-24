@@ -7,7 +7,7 @@
 
   outputs = { nixpkgs, ... }@inputs: {
     # NixOS configuration entrypoint. Available through
-    # 'nixos-rebuild --flake .#your-hostname'
+    # 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
