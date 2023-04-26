@@ -1,4 +1,8 @@
-{ inputs, config, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }:
+let
+  mkSure = lib.mkOverride 0;
+in
+{
   imports = [
     ./hardware-configuration.nix
   ];
