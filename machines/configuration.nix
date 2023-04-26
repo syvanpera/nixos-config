@@ -12,6 +12,7 @@
     ];
   };
 
+  # The base system profile packages (to search, use $ nix search <xxx>)
   environment.systemPackages = with pkgs; [
     neovim
     wget

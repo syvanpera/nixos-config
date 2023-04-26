@@ -13,13 +13,10 @@
     };
   };
 
+  # Make things work in QEMU VM
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = mkSure true;
+
   networking.hostName = "devbox";
   networking.networkmanager.enable = true;
-
-  # The base system profile packages (to search, use $ nix search <xxx>)
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
-  ];
 }
