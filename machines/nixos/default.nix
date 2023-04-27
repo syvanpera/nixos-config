@@ -22,7 +22,10 @@ in
   services.spice-vdagentd.enable = mkSure true;
 
   # Enable OpenSSH daemon
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
+  };
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
