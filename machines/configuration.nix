@@ -4,7 +4,7 @@
   # Define a user account
   users.users.${username} = {
     description = "Tuomo Syvänperä";
-    initialPassword = ${username};
+    initialPassword = "${username}";
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
