@@ -64,11 +64,11 @@
 
     xserver = {
       # Enable the X11 windowing system
-      enable = true;
+      # enable = true;
 
       # Enable the XFCE Desktop Environment
       displayManager.lightdm.enable = true;
-      desktopManager.xfce.enable = true;
+      # desktopManager.xfce.enable = true;
 
       libinput.enable = true;
 
