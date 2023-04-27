@@ -9,10 +9,10 @@ in
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+      grub = {
+        enable = true;
+        version = 2;
+        device = "/dev/vda";
       };
     };
   };
@@ -21,6 +21,9 @@ in
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = mkSure true;
 
-  networking.hostName = "devbox";
+  # Enable OpenSSH daemon
+  services.openssh.enable = true;
+
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 }

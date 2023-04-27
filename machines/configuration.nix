@@ -52,10 +52,6 @@
   console.keyMap = "fi";
 
   services = {
-    openssh = {
-      enable = true;
-    };
-
     pipewire = {
       enable = true;
       alsa = {
