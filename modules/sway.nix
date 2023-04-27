@@ -1,10 +1,10 @@
 { inputs, config, lib, pkgs, ... }:
 let
-  # bash script to let dbus know about important env variables and
-  # propagate them to relevent services run at the end of sway config
-  # see
+  # Bash script to let dbus know about important env variables and propagate them to relevent
+  # services. Run at the end of sway config
+  # See
   # https://github.com/emersion/xdg-desktop-portal-wlr/wiki/"It-doesn't-work"-Troubleshooting-Checklist
-  # note: this is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts  
+  # Note: This is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts  
   # some user services to make sure they have the correct environment variables
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -18,11 +18,11 @@ let
     '';
   };
 
-  # currently, there is some friction between sway and gtk:
+  # Currently, there is some friction between sway and gtk:
   # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-  # the suggested way to set gtk settings is with gsettings
-  # for gsettings to work, we need to tell it where the schemas are
-  # using the XDG_DATA_DIR environment variable
+  #
+  # The suggested way to set gtk settings is with gsettings. For gsettings to work,
+  # we need to tell it where the schemas are using the XDG_DATA_DIR environment variable
   # run at the end of sway config
   configure-gtk = pkgs.writeTextFile {
     name = "configure-gtk";
@@ -48,10 +48,6 @@ in
     wayland
   ];
 
-  # xdg-desktop-portal works by exposing a series of D-Bus interfaces
-  # known as portals under a well-known name
-  # (org.freedesktop.portal.Desktop) and object path (/org/freedesktop/portal/desktop).
-  # The portal interfaces include APIs for file access, opening URIs, printing and others.
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;

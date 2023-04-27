@@ -13,6 +13,7 @@ in
       ./nixos
       ./configuration.nix
       ../modules/sway.nix
+      ../modules/greetd.nix
     ];
   };
 
