@@ -12,6 +12,7 @@ in
     modules = [
       ./nixos
       ./configuration.nix
+      ./modules/sway.nix
     ];
   };
 
