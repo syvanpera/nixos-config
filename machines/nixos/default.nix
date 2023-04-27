@@ -1,36 +1,29 @@
-{ inputs, config, pkgs, ... }: {
+{ inputs, config, lib, pkgs, ... }:
+let
+  mkSure = lib.mkOverride 0;
+in
+{
   imports = [
     ./hardware-configuration.nix
   ];
 
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+      grub = {
+        enable = true;
+        version = 2;
+        device = "/dev/vda";
       };
     };
   };
 
+  # Make things work in QEMU VM
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = mkSure true;
+
+  # Enable OpenSSH daemon
+  services.openssh.enable = true;
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-
-  # Define a user account
-  users.users.tuomo = {
-    description = "Tuomo Syvänperä";
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      firefox
-    ];
-  };
-
-  # The base system profile packages (to search, use $ nix search <xxx>)
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
-  ];
 }
