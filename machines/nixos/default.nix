@@ -17,11 +17,9 @@ in
     };
   };
 
-  # Make things work in QEMU VM
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = mkSure true;
 
-  # Enable OpenSSH daemon
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";
