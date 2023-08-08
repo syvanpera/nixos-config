@@ -14,6 +14,7 @@ in
       ./configuration.nix
       ../modules/sway.nix
       # ../modules/greetd.nix
+      # ../modules/xfce4.nix
     ];
   };
 
